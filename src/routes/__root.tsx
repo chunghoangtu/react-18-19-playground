@@ -3,13 +3,13 @@ import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/day-01", label: "Day 01 — Foundation" },
-  { to: "/day-02", label: "Day 02 — Transitions" },
-  { to: "/day-03", label: "Day 03 — Deferred & useId" },
-  { to: "/day-04", label: "Day 04 — External Store" },
-  { to: "/day-05", label: "Day 05 — Suspense" },
-  { to: "/day-06", label: "Day 06 — Actions & Forms" },
-  { to: "/day-07", label: "Day 07 — React 19 & MiniApp" },
+  { to: "/pages/day-01", label: "Day 01 — Foundation" },
+  { to: "/pages/day-02", label: "Day 02 — Transitions" },
+  { to: "/pages/day-03", label: "Day 03 — Deferred & useId" },
+  { to: "/pages/day-04", label: "Day 04 — External Store" },
+  { to: "/pages/day-05", label: "Day 05 — Suspense" },
+  { to: "/pages/day-06", label: "Day 06 — Actions & Forms" },
+  { to: "/pages/day-07", label: "Day 07 — React 19 & MiniApp" },
 ] as const;
 
 function SideNavLink(props: { to: (typeof navItems)[number]["to"]; children: React.ReactNode }) {
