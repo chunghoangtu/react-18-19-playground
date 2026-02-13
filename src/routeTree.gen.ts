@@ -10,11 +10,47 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PagesDay07RouteImport } from './routes/pages/day-07'
+import { Route as PagesDay06RouteImport } from './routes/pages/day-06'
+import { Route as PagesDay05RouteImport } from './routes/pages/day-05'
+import { Route as PagesDay04RouteImport } from './routes/pages/day-04'
+import { Route as PagesDay03RouteImport } from './routes/pages/day-03'
+import { Route as PagesDay02RouteImport } from './routes/pages/day-02'
 import { Route as PagesDay01RouteImport } from './routes/pages/day-01'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay07Route = PagesDay07RouteImport.update({
+  id: '/pages/day-07',
+  path: '/pages/day-07',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay06Route = PagesDay06RouteImport.update({
+  id: '/pages/day-06',
+  path: '/pages/day-06',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay05Route = PagesDay05RouteImport.update({
+  id: '/pages/day-05',
+  path: '/pages/day-05',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay04Route = PagesDay04RouteImport.update({
+  id: '/pages/day-04',
+  path: '/pages/day-04',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay03Route = PagesDay03RouteImport.update({
+  id: '/pages/day-03',
+  path: '/pages/day-03',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay02Route = PagesDay02RouteImport.update({
+  id: '/pages/day-02',
+  path: '/pages/day-02',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PagesDay01Route = PagesDay01RouteImport.update({
@@ -26,27 +62,76 @@ const PagesDay01Route = PagesDay01RouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/pages/day-01': typeof PagesDay01Route
+  '/pages/day-02': typeof PagesDay02Route
+  '/pages/day-03': typeof PagesDay03Route
+  '/pages/day-04': typeof PagesDay04Route
+  '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-06': typeof PagesDay06Route
+  '/pages/day-07': typeof PagesDay07Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/pages/day-01': typeof PagesDay01Route
+  '/pages/day-02': typeof PagesDay02Route
+  '/pages/day-03': typeof PagesDay03Route
+  '/pages/day-04': typeof PagesDay04Route
+  '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-06': typeof PagesDay06Route
+  '/pages/day-07': typeof PagesDay07Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/pages/day-01': typeof PagesDay01Route
+  '/pages/day-02': typeof PagesDay02Route
+  '/pages/day-03': typeof PagesDay03Route
+  '/pages/day-04': typeof PagesDay04Route
+  '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-06': typeof PagesDay06Route
+  '/pages/day-07': typeof PagesDay07Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/pages/day-01'
+  fullPaths:
+    | '/'
+    | '/pages/day-01'
+    | '/pages/day-02'
+    | '/pages/day-03'
+    | '/pages/day-04'
+    | '/pages/day-05'
+    | '/pages/day-06'
+    | '/pages/day-07'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/pages/day-01'
-  id: '__root__' | '/' | '/pages/day-01'
+  to:
+    | '/'
+    | '/pages/day-01'
+    | '/pages/day-02'
+    | '/pages/day-03'
+    | '/pages/day-04'
+    | '/pages/day-05'
+    | '/pages/day-06'
+    | '/pages/day-07'
+  id:
+    | '__root__'
+    | '/'
+    | '/pages/day-01'
+    | '/pages/day-02'
+    | '/pages/day-03'
+    | '/pages/day-04'
+    | '/pages/day-05'
+    | '/pages/day-06'
+    | '/pages/day-07'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PagesDay01Route: typeof PagesDay01Route
+  PagesDay02Route: typeof PagesDay02Route
+  PagesDay03Route: typeof PagesDay03Route
+  PagesDay04Route: typeof PagesDay04Route
+  PagesDay05Route: typeof PagesDay05Route
+  PagesDay06Route: typeof PagesDay06Route
+  PagesDay07Route: typeof PagesDay07Route
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +141,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-07': {
+      id: '/pages/day-07'
+      path: '/pages/day-07'
+      fullPath: '/pages/day-07'
+      preLoaderRoute: typeof PagesDay07RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-06': {
+      id: '/pages/day-06'
+      path: '/pages/day-06'
+      fullPath: '/pages/day-06'
+      preLoaderRoute: typeof PagesDay06RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-05': {
+      id: '/pages/day-05'
+      path: '/pages/day-05'
+      fullPath: '/pages/day-05'
+      preLoaderRoute: typeof PagesDay05RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-04': {
+      id: '/pages/day-04'
+      path: '/pages/day-04'
+      fullPath: '/pages/day-04'
+      preLoaderRoute: typeof PagesDay04RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-03': {
+      id: '/pages/day-03'
+      path: '/pages/day-03'
+      fullPath: '/pages/day-03'
+      preLoaderRoute: typeof PagesDay03RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-02': {
+      id: '/pages/day-02'
+      path: '/pages/day-02'
+      fullPath: '/pages/day-02'
+      preLoaderRoute: typeof PagesDay02RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages/day-01': {
@@ -71,6 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PagesDay01Route: PagesDay01Route,
+  PagesDay02Route: PagesDay02Route,
+  PagesDay03Route: PagesDay03Route,
+  PagesDay04Route: PagesDay04Route,
+  PagesDay05Route: PagesDay05Route,
+  PagesDay06Route: PagesDay06Route,
+  PagesDay07Route: PagesDay07Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
