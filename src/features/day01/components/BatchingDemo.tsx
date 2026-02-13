@@ -11,6 +11,7 @@ export function BatchingDemo() {
   const [a, setA] = React.useState(0);
   const [b, setB] = React.useState(0);
   const [logs, setLogs] = React.useState<LogItem[]>([]);
+  const [enableLogs, setEnableLogs] = React.useState(true);
 
   const renderRef = React.useRef(0);
   renderRef.current += 1;
@@ -51,12 +52,26 @@ export function BatchingDemo() {
     }, 0);
   };
 
+  const syncUpdateX5 = () => {
+    for (let i = 0; i < 5; i += 1) {
+      setA((x) => x + 1);
+      setB((x) => x + 1);
+    }
+    pushLog("SYNC x5: setA+setB in a loop (same click)");
+  };
+
+  // React.useEffect(() => {
+  //   // mỗi render log 1 dòng (nhìn render count tăng)
+  //   // NOTE: StrictMode dev có thể làm effect chạy lại, coi StrictModeNote.
+  //   // eslint-disable-next-line no-console
+  //   console.log(`[BatchingDemo] render #${renderRef.current}`, { a, b });
+  // });
+
   React.useEffect(() => {
-    // mỗi render log 1 dòng (nhìn render count tăng)
-    // NOTE: StrictMode dev có thể làm effect chạy lại, coi StrictModeNote.
+    if (!enableLogs) return;
     // eslint-disable-next-line no-console
     console.log(`[BatchingDemo] render #${renderRef.current}`, { a, b });
-  });
+  }, [a, b, enableLogs]);
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -64,7 +79,8 @@ export function BatchingDemo() {
         <div>
           <div className="text-lg font-semibold">Automatic batching demo</div>
           <div className="text-sm text-white/70">
-            Observe renders in console. React 18 batches updates across async boundaries.
+            Observe renders in console. React 18 batches updates across async
+            boundaries.
           </div>
         </div>
 
@@ -74,6 +90,15 @@ export function BatchingDemo() {
         >
           Reset
         </button>
+        <label className="flex items-center gap-2 text-sm text-white/80">
+          <input
+            type="checkbox"
+            checked={enableLogs}
+            onChange={(e) => setEnableLogs(e.target.checked)}
+            className="h-4 w-4 accent-white"
+          />
+          Enable logs
+        </label>
       </div>
 
       <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -110,6 +135,12 @@ export function BatchingDemo() {
         >
           setTimeout update
         </button>
+        <button
+          onClick={syncUpdateX5}
+          className="rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15"
+        >
+          Sync update x5
+        </button>
       </div>
 
       <div className="mt-4">
@@ -119,7 +150,10 @@ export function BatchingDemo() {
             <li className="text-white/60">No logs yet.</li>
           ) : (
             logs.map((l) => (
-              <li key={l.id} className="rounded-lg border border-white/10 bg-slate-900/30 px-3 py-2">
+              <li
+                key={l.id}
+                className="rounded-lg border border-white/10 bg-slate-900/30 px-3 py-2"
+              >
                 {l.text}
               </li>
             ))
