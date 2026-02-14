@@ -12,11 +12,11 @@ import { CategorySelect } from "../../features/day02/components/CategorySelect";
 
 type Category = Item["category"] | "All";
 
-const ALL_ITEMS: Item[] = generateItems(100_000);
+const ALL_ITEMS: Item[] = generateItems(500_000);
 
 function filterItems(items: Item[], query: string, category: Category): Item[] {
   const q = query.trim().toLowerCase();
-  if (!q) return items;
+  // if (!q) return items;
 
   // Filter nặng hơn một chút để bạn cảm nhận transition rõ (đừng quá nặng kẻo lag máy)
   // return items.filter((it) => it.name.toLowerCase().includes(q));
