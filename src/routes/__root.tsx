@@ -8,6 +8,7 @@ const navItems = [
   { to: "/pages/day-03", label: "Day 03 — Deferred & useId" },
   { to: "/pages/day-04", label: "Day 04 — External Store" },
   { to: "/pages/day-05", label: "Day 05 — Suspense" },
+  { to: "/pages/day-05-suspend", label: "Day 05 — Route-level Suspense" },
   { to: "/pages/day-06", label: "Day 06 — Actions & Forms" },
   { to: "/pages/day-07", label: "Day 07 — React 19 & MiniApp" },
 ] as const;

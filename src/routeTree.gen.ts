@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PagesDay07RouteImport } from './routes/pages/day-07'
 import { Route as PagesDay06RouteImport } from './routes/pages/day-06'
+import { Route as PagesDay05SuspendRouteImport } from './routes/pages/day-05-suspend'
 import { Route as PagesDay05RouteImport } from './routes/pages/day-05'
 import { Route as PagesDay04RouteImport } from './routes/pages/day-04'
 import { Route as PagesDay03RouteImport } from './routes/pages/day-03'
@@ -31,6 +32,11 @@ const PagesDay07Route = PagesDay07RouteImport.update({
 const PagesDay06Route = PagesDay06RouteImport.update({
   id: '/pages/day-06',
   path: '/pages/day-06',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesDay05SuspendRoute = PagesDay05SuspendRouteImport.update({
+  id: '/pages/day-05-suspend',
+  path: '/pages/day-05-suspend',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PagesDay05Route = PagesDay05RouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/pages/day-03': typeof PagesDay03Route
   '/pages/day-04': typeof PagesDay04Route
   '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-05-suspend': typeof PagesDay05SuspendRoute
   '/pages/day-06': typeof PagesDay06Route
   '/pages/day-07': typeof PagesDay07Route
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/pages/day-03': typeof PagesDay03Route
   '/pages/day-04': typeof PagesDay04Route
   '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-05-suspend': typeof PagesDay05SuspendRoute
   '/pages/day-06': typeof PagesDay06Route
   '/pages/day-07': typeof PagesDay07Route
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/pages/day-03': typeof PagesDay03Route
   '/pages/day-04': typeof PagesDay04Route
   '/pages/day-05': typeof PagesDay05Route
+  '/pages/day-05-suspend': typeof PagesDay05SuspendRoute
   '/pages/day-06': typeof PagesDay06Route
   '/pages/day-07': typeof PagesDay07Route
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/pages/day-03'
     | '/pages/day-04'
     | '/pages/day-05'
+    | '/pages/day-05-suspend'
     | '/pages/day-06'
     | '/pages/day-07'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/pages/day-03'
     | '/pages/day-04'
     | '/pages/day-05'
+    | '/pages/day-05-suspend'
     | '/pages/day-06'
     | '/pages/day-07'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/pages/day-03'
     | '/pages/day-04'
     | '/pages/day-05'
+    | '/pages/day-05-suspend'
     | '/pages/day-06'
     | '/pages/day-07'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   PagesDay03Route: typeof PagesDay03Route
   PagesDay04Route: typeof PagesDay04Route
   PagesDay05Route: typeof PagesDay05Route
+  PagesDay05SuspendRoute: typeof PagesDay05SuspendRoute
   PagesDay06Route: typeof PagesDay06Route
   PagesDay07Route: typeof PagesDay07Route
 }
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/pages/day-06'
       fullPath: '/pages/day-06'
       preLoaderRoute: typeof PagesDay06RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/day-05-suspend': {
+      id: '/pages/day-05-suspend'
+      path: '/pages/day-05-suspend'
+      fullPath: '/pages/day-05-suspend'
+      preLoaderRoute: typeof PagesDay05SuspendRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages/day-05': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   PagesDay03Route: PagesDay03Route,
   PagesDay04Route: PagesDay04Route,
   PagesDay05Route: PagesDay05Route,
+  PagesDay05SuspendRoute: PagesDay05SuspendRoute,
   PagesDay06Route: PagesDay06Route,
   PagesDay07Route: PagesDay07Route,
 }
