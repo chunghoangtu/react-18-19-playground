@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useRenderCount } from "../hooks/useRenderCount";
 
 type RenderCounterProps = {

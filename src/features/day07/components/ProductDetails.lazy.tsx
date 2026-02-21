@@ -1,4 +1,3 @@
-import * as React from "react";
 import { use } from "react";
 import type { Product } from "../data/products";
 import { fetchProductDetails } from "../utils/fakeApi";

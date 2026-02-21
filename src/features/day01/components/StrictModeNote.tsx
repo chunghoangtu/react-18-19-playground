@@ -1,5 +1,3 @@
-import * as React from "react"
-
 export function StrictModeNote() {
   return (
     <div className="rounded-2xl border border-white/10 bg-amber-400/10 p-4">

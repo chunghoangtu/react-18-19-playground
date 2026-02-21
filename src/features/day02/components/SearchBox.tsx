@@ -1,5 +1,3 @@
-import * as React from "react";
-
 type SearchBoxProps = {
   value: string;
   onChange: (next: string) => void;
