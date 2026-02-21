@@ -5,7 +5,7 @@ type Props = {
   title?: string;
 };
 
-export function TodoList({ todos, title = "Todos" }: Props) {
+export function TodoList({ todos, title = "Todos" }: Readonly<Props>) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
