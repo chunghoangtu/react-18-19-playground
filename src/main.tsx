@@ -5,7 +5,10 @@ import { routeTree } from "./routeTree.gen";
 
 import "./shared/styles/globals.css";
 
-const router = createRouter({ routeTree });
+const router = createRouter({ 
+  routeTree,
+  basepath: '/react-18-19-playground/',
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
