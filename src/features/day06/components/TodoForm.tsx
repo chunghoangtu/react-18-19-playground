@@ -9,7 +9,8 @@ import type { Todo } from "../utils/fakeApi";
 
 type OptimisticAction =
   | { type: "add"; todo: Todo }
-  | { type: "remove"; id: string };
+  | { type: "remove"; id: string }
+  | { type: "replace"; tempId: string; real: Todo };
 
 type Props = {
   dispatchOptimistic: (action: OptimisticAction) => void;
@@ -28,7 +29,7 @@ function makeTempTodo(text: string) {
   const id = `temp-${Date.now()}-${Math.random().toString(16).slice(2)}`;
   const todo: Todo = {
     id,
-    text: text.trim() || "(empty)",
+    text: `⏳ ${text.trim() || "(empty)"}`,
     createdAt: Date.now(),
   };
   return { id, todo };

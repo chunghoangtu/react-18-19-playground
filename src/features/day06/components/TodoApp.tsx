@@ -33,15 +33,25 @@ export function TodoApp() {
   // EX 1
   type OptimisticAction =
     | { type: "add"; todo: Todo }
-    | { type: "remove"; id: string };
+    | { type: "remove"; id: string }
+    | { type: "replace"; tempId: string; real: Todo };
 
   const [optimisticTodos, dispatchOptimistic] = useOptimistic(
     todos,
     (current: Todo[], action: OptimisticAction) => {
-      if (action.type === "add") return [action.todo, ...current];
-      if (action.type === "remove")
-        return current.filter((t) => t.id !== action.id);
-      return current;
+      switch (action.type) {
+        case "add":
+          return [action.todo, ...current];
+
+        case "remove":
+          return current.filter((t) => t.id !== action.id);
+
+        case "replace":
+          return current.map((t) => (t.id === action.tempId ? action.real : t));
+
+        default:
+          return current;
+      }
     },
   );
 
@@ -59,12 +69,20 @@ export function TodoApp() {
     if (!addState.tempId) return;
 
     if (addState.ok && addState.lastAdded) {
+      // ✅ commit base state (source of truth)
       setTodos((prev) => [addState.lastAdded!, ...prev]);
-      dispatchOptimistic({ type: "remove", id: addState.tempId }); // ✅ bỏ temp
+
+      // ✅ replace temp in optimistic view (no flicker)
+      dispatchOptimistic({
+        type: "replace",
+        tempId: addState.tempId,
+        real: addState.lastAdded,
+      });
     }
 
     if (!addState.ok) {
-      dispatchOptimistic({ type: "remove", id: addState.tempId }); // ✅ rollback
+      // ✅ rollback
+      dispatchOptimistic({ type: "remove", id: addState.tempId });
     }
   }, [addState.ok, addState.lastAdded, addState.tempId, dispatchOptimistic]);
 
