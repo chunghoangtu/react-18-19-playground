@@ -1,75 +1,116 @@
-# React + TypeScript + Vite
+# React 18 → 19 Playground (TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive learning series exploring React 18 and React 19 features with hands-on examples.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** – Latest React features
+- **TypeScript** – Type-safe development
+- **Vite** – Lightning-fast bundler
+- **TailwindCSS** – Utility-first styling
+- **TanStack Router** – Type-safe routing
+- **React Compiler** – Automatic memoization
 
-## React Compiler
+## Project Structure
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── features/
+│   ├── day01/          # Foundation & Batching
+│   ├── day02/          # Transitions (useTransition)
+│   ├── day03/          # Deferred & useId
+│   ├── day04/          # External Store (useSyncExternalStore)
+│   ├── day05/          # Suspense & Code Splitting
+│   ├── day06/          # Actions & Forms
+│   └── day07/          # React 19 & MiniApp
+├── routes/             # TanStack Router pages
+└── shared/             # Global styles & utilities
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Days Overview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Day 01 — Foundation
+- `createRoot` and root rendering
+- Automatic batching in React 18
+- `StrictMode` behavior in development
+- `RenderCounter` to visualize render cycles
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Day 02 — Transitions
+- `useTransition` hook for non-urgent updates
+- `startTransition` API
+- Responsive UI with pending states
+- Managing heavy filtering operations
+
+### Day 03 — Deferred & useId
+- `useDeferredValue` for deferred rendering
+- `useId` for stable unique identifiers
+- Typeahead search patterns
+- Field component patterns
+
+### Day 04 — External Store
+- `useSyncExternalStore` for external state sync
+- Custom store implementation (`createStore`)
+- Settings management
+- Re-render optimization with external stores
+
+### Day 05 — Suspense
+- `React.lazy()` for code splitting
+- `<Suspense>` boundaries
+- Fallback UI patterns
+- Loading state management
+
+### Day 06 — Actions & Forms
+- Form actions (server-side or client-side)
+- New form patterns
+- Todo app implementation
+- Form submission patterns
+
+### Day 07 — React 19 & MiniApp
+- React 19 latest features
+- `use()` hook
+- Mini e-commerce application
+- State management patterns
+- Code splitting with dynamic features
+
+## Getting Started
+
+### Installation
+
+```bash
+pnpm install
 ```
+
+### Development
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+### Build
+
+```bash
+pnpm build
+```
+
+## Features
+
+- ✅ Type-safe routing with TanStack Router
+- ✅ Automatic route tree generation
+- ✅ React Compiler enabled for performance
+- ✅ ESLint + TypeScript configuration
+- ✅ TailwindCSS for styling
+- ✅ Dark mode ready (Slate color scheme)
+
+## Learning Goals
+
+By exploring this playground, you'll understand:
+
+1. How React 18's automatic batching improves performance
+2. Using transitions to keep UI responsive during heavy work
+3. Managing deferred values and generating unique IDs
+4. Syncing with external state management systems
+5. Code splitting and suspense patterns
+6. New form handling in React 19
+7. Building complete apps with React 19 features
