@@ -94,6 +94,24 @@ Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 pnpm build
 ```
 
+## GitHub Actions
+
+This project includes a CI/CD workflow that automatically builds the project on push and pull requests to the `main` branch.
+
+**Workflow:** `.github/workflows/main-workflow.yml`
+
+- **Triggers:** Push to `main` and Pull Requests to `main`
+- **Node version:** 25.x
+- **Package Manager:** pnpm (with frozen lockfile)
+- **Steps:**
+  1. Checkout code
+  2. Setup pnpm
+  3. Setup Node.js
+  4. Install dependencies with `pnpm install --frozen-lockfile`
+  5. Build project with `pnpm build`
+
+The workflow ensures code quality and build integrity on every change.
+
 ## Features
 
 - ✅ Type-safe routing with TanStack Router
