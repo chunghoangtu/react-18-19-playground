@@ -96,10 +96,11 @@ pnpm build
 
 ## GitHub Actions
 
-This project includes a CI/CD workflow that automatically builds the project on push and pull requests to the `main` branch.
+This project includes a CI/CD workflow that automatically builds and deploys the project on push to the `main` branch.
 
 **Workflow:** `.github/workflows/main-workflow.yml`
 
+### Build & Test Job
 - **Triggers:** Push to `main` and Pull Requests to `main`
 - **Node version:** 25.x
 - **Package Manager:** pnpm (with frozen lockfile)
@@ -109,8 +110,21 @@ This project includes a CI/CD workflow that automatically builds the project on 
   3. Setup Node.js
   4. Install dependencies with `pnpm install --frozen-lockfile`
   5. Build project with `pnpm build`
+  6. Upload build artifact
 
-The workflow ensures code quality and build integrity on every change.
+### Deploy Job
+- **Triggers:** Push to `main` only (not on PRs)
+- **Depends on:** Successful build
+- **Target:** GitHub Pages
+- **Steps:**
+  1. Download build artifact
+  2. Configure GitHub Pages
+  3. Upload to GitHub Pages
+  4. Deploy application
+
+**Live URL:** Access the deployed app at `https://chunghoangtu.github.io/react-18-19-playground/`
+
+The workflow ensures code quality on every change and automatically deploys to GitHub Pages on successful builds to the main branch.
 
 ## Features
 
